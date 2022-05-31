@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Patrimonio.Models.DbCategoria>
+
+@{
+    Layout = "_layoutCategoria"; 
+    ViewData["Categorias"] = "Index";
+}
+
+<h1>lista de categorias</h1>
+
+<p>
+    <a asp-action="Create"> <input type="submit" value="Criar um novo" class="btn btn-primary " /></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.descricaocategoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricaocategoria)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id"> 
+                    <input type="submit" value="Editar" class="btn btn-primary " /></a> |
+                <a asp-action="Details" asp-route-id="@item.id"> 
+                    <input type="submit" value="Detalhes" class="btn btn-primary " /></a> |
+                <a asp-action="Delete" asp-route-id="@item.id">
+                    <input type="submit" value="Deletar" class="btn btn-primary " /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

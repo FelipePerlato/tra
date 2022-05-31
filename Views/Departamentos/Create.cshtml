@@ -1,0 +1,52 @@
+﻿@model Patrimonio.Models.DbDepartamento
+
+@{
+     Layout = "_LayoutDepartamento";
+    ViewData["Departamentos"] = "Create";
+}
+
+<h1>Cadastrar</h1>
+<p>
+    <div class="form-group">
+        @*HtmlHelpers *@
+        <text>local</text>@Html.DropDownList("nomelocal",new SelectList(ViewBag.local,"value","text"))
+       
+    </div>
+</p>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+           
+                <input asp-for="nomedepartamento" class="form-control" placeholder="Digite a nome"  />
+                <span asp-validation-for="nomedepartamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <input asp-for="descricaodepartamento" class="form-control"  placeholder="Digite a descrição"  />
+                <span asp-validation-for="descricaodepartamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*Razor*@
+              
+                 
+                <select  asp-items=@ViewBag.local2 nome="nomelocal" placeholder="Selecione o local" ></select>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="cadastrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"> <input type="submit" value="Voltar para a lista" class="btn btn-primary " /></a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

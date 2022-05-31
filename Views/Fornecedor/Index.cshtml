@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Patrimonio.Models.DbFornecedor>
+
+@{
+     Layout = "_layoutFornecedor";
+    ViewData["Fornecedor"] = "Index";
+}
+
+<h1>lista de fornecedores</h1>
+
+<p>
+    <a asp-action="Create"><input type="submit" value="Criar um novo" class="btn btn-primary " /></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nomefornecedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.endereco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomefornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fone)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">
+                    <input type="submit" value="Editar" class="btn btn-primary " /></a> 
+                <a asp-action="Details" asp-route-id="@item.id"> 
+                    <input type="submit" value="Detalhes" class="btn btn-primary " /></a> 
+                <a asp-action="Delete" asp-route-id="@item.id">
+                    <input type="submit" value="Deletar" class="btn btn-primary " /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
